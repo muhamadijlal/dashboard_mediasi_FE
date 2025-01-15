@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    font-family: "Montserrat", Helvetica, sans-serif;
+  }
+}
+
+@layer utilities {
+  aside > ul > a > li {
+    @apply mb-2;
+  }
+  aside > ul > a > li > p {
+    @apply text-sm;
+  }
+
+  aside > ul > a > li > .icon {
+    @apply rounded-md p-1 text-3xl;
+  }
+
+  aside > ul > a > li.list-menu {
+    @apply flex w-full items-center gap-4 rounded-lg p-1;
+  }
+}
