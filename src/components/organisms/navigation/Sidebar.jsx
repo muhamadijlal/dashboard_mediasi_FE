@@ -8,7 +8,7 @@ function Sidebar() {
   const current_url = location.pathname;
 
   return (
-    <div className="drawer-side">
+    <div className="drawer-side fixed -mt-1">
       <label
         htmlFor="my-drawer"
         aria-label="close sidebar"
@@ -16,11 +16,7 @@ function Sidebar() {
       ></label>
       <aside className="min-h-full w-64 bg-base-100 p-4">
         <ul className="text-base-content">
-          <NavbarTitle
-            title="daisyUI"
-            version="1.0.0"
-            showTitle="hidden lg:block"
-          />
+          <NavbarTitle showTitle="hidden lg:block" />
           <h4 className="h-4"></h4>
           <ListMenu
             isActive={

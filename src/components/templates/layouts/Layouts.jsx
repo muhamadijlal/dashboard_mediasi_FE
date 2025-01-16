@@ -1,9 +1,17 @@
-function Layouts({ children }) {
+import Sidebar from "@organisms/navigation/Sidebar";
+import StickyNavbar from "@organisms/navigation/navbar/StickyNavbar";
+import { Outlet } from "react-router-dom";
+
+function Layouts() {
   return (
     <>
       <div className="drawer lg:drawer-open">
         <input id="my-drawer" type="checkbox" className="drawer-toggle" />
-        {children}
+        <Layouts.Content>
+          <StickyNavbar />
+          <Outlet />
+        </Layouts.Content>
+        <Sidebar />
       </div>
     </>
   );
@@ -11,17 +19,14 @@ function Layouts({ children }) {
 
 function Content({ children }) {
   return (
-    <>
-      <div className="drawer-content">
-        <div className="pb-16">{children}</div>
-      </div>
-    </>
+    <div className="drawer-content">
+      <div className="pb-16">{children}</div>
+    </div>
   );
 }
 
 function Footer() {
   return (
-    // footer footer-center bg-base-300 text-base-content p-4 w-full
     <footer>
       <aside>
         <p>

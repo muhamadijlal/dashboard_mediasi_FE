@@ -6,7 +6,7 @@ import FormSelect from "@components/molecules/select/FormSelect";
 import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 
-function Filter({ onSubmit, isDisabled }) {
+function Filter({ onSubmit, isDisabled, filter, setFilter }) {
   const {
     loading,
     dataRuas,
@@ -16,16 +16,6 @@ function Filter({ onSubmit, isDisabled }) {
     setSelectedRuas,
     setSelectedGerbang,
   } = useFetchSelectData();
-
-  const today = new Date().toISOString().split("T")[0];
-
-  // Initialize the state for the filter form
-  const [filter, setFilter] = useState({
-    ruas: selectedRuas,
-    gerbang: selectedGerbang,
-    start_date: today,
-    end_date: today, // Fix duplicate 'start_date' key
-  });
 
   // Update the filter state when selectedRuas or selectedGerbang change
   useEffect(() => {

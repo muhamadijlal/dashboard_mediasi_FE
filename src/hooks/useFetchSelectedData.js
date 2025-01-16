@@ -7,15 +7,13 @@ const useFetchSelectData = () => {
   const [dataGerbang, setDataGerbang] = useState([]);
   const [selectedRuas, setSelectedRuas] = useState("");
   const [selectedGerbang, setSelectedGerbang] = useState("");
-
-  const BASE_URL = "http://127.0.0.1:8000/api";
   // Fetch data untuk select pertama (ruas) dengan Axios
   useEffect(() => {
     const fetchRuasData = async () => {
       setLoading(true);
       try {
         // Gantilah dengan API call yang sesuai menggunakan axios
-        const response = await axios.post(BASE_URL + "/select/getRuas");
+        const response = await axios.post(`${env.API_URL}/select/getRuas`);
         setDataRuas(response.data.data); // Menyimpan data yang diterima
       } catch (error) {
         console.error("Error fetching data Ruas:", error);
@@ -35,7 +33,7 @@ const useFetchSelectData = () => {
       setLoading(true);
       try {
         // Gantilah dengan API call yang sesuai menggunakan axios, misalnya berdasarkan selectedRuas
-        const response = await axios.post(BASE_URL + "/select/getGerbang", {
+        const response = await axios.post(`${env.API_URL}/select/getGerbang`, {
           ruas_id: selectedRuas,
         });
         setDataGerbang(response.data.data); // Menyimpan data yang diterima

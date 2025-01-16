@@ -1,67 +1,69 @@
-import Pagination from "@molecules/pagination/Pagination";
+import Paginator from "@molecules/pagination/Paginator";
 import Card from "@components/molecules/Card";
 
-function Table({ listData, loading }) {
+function Table({ meta, handleLimit, children }) {
   return (
     <Card>
       <div className="overflow-x-auto">
-        <table className="table table-zebra table-xs">
-          <thead>
-            <tr className="text-center">
-              <th>No</th>
-              <th>Gardu</th>
-              <th>Shift</th>
-              <th>Perioda</th>
-              <th>No Resi</th>
-              <th>Golongan</th>
-              <th>Metode Bayar</th>
-              <th>Jenis Notran</th>
-              <th>Etoll</th>
-              <th>Tarif</th>
-            </tr>
-          </thead>
-          <tbody>
-            {loading ? (
-              <tr>
-                <td className="p-3 text-center" colSpan="10">
-                  Loading...
-                </td>
-              </tr>
-            ) : listData.length > 0 ? (
-              listData.map((item, index) => (
-                <tr key={index} className="text-center">
-                  <th>{index + 1}</th>
-                  <td className="max-w-xs break-words p-3">{item.gardu_id}</td>
-                  <td className="max-w-xs break-words p-3">{item.shift}</td>
-                  <td className="max-w-xs break-words p-3">{item.perioda}</td>
-                  <td className="max-w-xs break-words p-3">{item.no_resi}</td>
-                  <td className="max-w-xs break-words p-3">{item.gol}</td>
-                  <td className="max-w-xs break-words p-3">
-                    {item.metoda_bayar_id}
-                  </td>
-                  <td className="max-w-xs break-words p-3">
-                    {item.notran_id_sah}
-                  </td>
-                  <td className="max-w-xs break-words p-3">
-                    {item.etoll_hash}
-                  </td>
-                  <td className="max-w-xs break-words p-3">{item.tarif}</td>
-                </tr>
-              ))
-            ) : (
-              <tr>
-                <td className="p-3 text-center" colSpan="10">
-                  Data not found
-                </td>
-              </tr>
-            )}
-          </tbody>
-        </table>
+        <div className="mx-2 mb-10">
+          <select
+            className="select select-bordered select-xs mt-5 w-full max-w-[70px]"
+            defaultValue={10}
+            onChange={(e) => handleLimit(e.target.value)}
+          >
+            <option value={10}>10</option>
+            <option value={25}>25</option>
+            <option value={50}>50</option>
+            <option value={100}>100</option>
+            <option value={500}>500</option>
+          </select>
+        </div>
+        <table className="table table-zebra table-xs">{children}</table>
       </div>
 
-      <Pagination />
+      <Paginator meta={meta} />
     </Card>
   );
 }
+
+function Header({ children }) {
+  return <thead>{children}</thead>;
+}
+
+function Body({ listData, columns, loading, currentPage, itemsPerPage }) {
+  return (
+    <tbody>
+      {loading ? (
+        <tr>
+          <td className="p-3 text-center" colSpan={columns.length}>
+            Loading...
+          </td>
+        </tr>
+      ) : listData.length > 0 ? (
+        listData.map((item, index) => (
+          <tr key={index} className="text-center">
+            {/* Render data dynamically based on columns */}
+            {columns.map((col, colIndex) => (
+              <td key={colIndex} className="max-w-xs break-words p-3">
+                {col.field == "no"
+                  ? (currentPage - 1) * itemsPerPage + index + 1
+                  : item[col.field]}
+              </td>
+            ))}
+          </tr>
+        ))
+      ) : (
+        <tr>
+          <td className="p-3 text-center" colSpan={columns.length}>
+            Data not found
+          </td>
+        </tr>
+      )}
+    </tbody>
+  );
+}
+
+Table.Header = Header;
+Table.Body = Body;
 
 export default Table;

@@ -6,11 +6,12 @@ function Select(props) {
     children,
     defaultValue = "",
     handleChange,
+    style = "",
   } = props;
 
   return (
     <select
-      className="select select-bordered select-sm"
+      className={`select select-bordered select-sm ${style}`}
       name={name}
       disabled={isDisabled}
       defaultValue={defaultValue}
