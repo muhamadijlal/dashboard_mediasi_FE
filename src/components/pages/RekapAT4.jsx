@@ -85,7 +85,7 @@ function RekapAT4() {
       setLoading(true);
 
       const response = await axios.post(
-        `http://127.0.0.1:8000/api/rekap_at4/getData${currentPage !== 1 ? "?page=" + currentPage : ""}`,
+        `${env.API_URL}/api/rekap_at4/getData${currentPage !== 1 ? "?page=" + currentPage : ""}`,
         { ruas_id, gerbang_id, start_date, end_date, limit },
       );
 
