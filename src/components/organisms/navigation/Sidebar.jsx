@@ -1,6 +1,7 @@
 import ListMenu from "@molecules/menu/ListMenu";
 import NavbarTitle from "@organisms/navigation/navbar/NavbarTitle";
 import { TbReport, TbReportMoney, TbReportAnalytics } from "react-icons/tb";
+import { GrCompare } from "react-icons/gr";
 import { useLocation } from "react-router-dom";
 
 function Sidebar() {
@@ -8,7 +9,7 @@ function Sidebar() {
   const current_url = location.pathname;
 
   return (
-    <div className="drawer-side fixed -mt-1">
+    <div className="drawer-side z-20">
       <label
         htmlFor="my-drawer"
         aria-label="close sidebar"
@@ -34,12 +35,19 @@ function Sidebar() {
             name="Rekap AT4"
             color="purple"
           />
-          <ListMenu
+          {/* <ListMenu
             isActive={current_url === "/rekap_pendapatan"}
             link="/rekap_pendapatan"
             Icon={TbReportMoney}
             name="Rekap Pendapatan"
             color="green"
+          /> */}
+          <ListMenu
+            isActive={current_url === "/data_compare"}
+            link="/data_compare"
+            Icon={GrCompare}
+            name="Data Compare"
+            color="orange"
           />
         </ul>
       </aside>

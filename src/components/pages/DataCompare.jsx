@@ -5,20 +5,18 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 
-const columnsTransaksiDetail = [
-  { header: "No", field: "no" },
-  { header: "Gardu", field: "gardu_id" },
-  { header: "Shift", field: "shift" },
-  { header: "Perioda", field: "perioda" },
-  { header: "No Resi", field: "no_resi" },
-  { header: "Golongan", field: "gol" },
-  { header: "Metode Bayar", field: "metoda_bayar_id" },
-  { header: "Jenis Notran", field: "notran_id_sah" },
-  { header: "Etoll", field: "etoll_hash" },
-  { header: "Tarif", field: "tarif" },
+const fieldDataCompare = [
+  { columns: "No", field: "no" },
+  { columns: "Tanggal", field: "tanggal" },
+  { columns: "GerbangID", field: "gerbang_id" },
+  { columns: "No.Gardu", field: "gardu_id" },
+  { columns: "Shift", field: "shift" },
+  { columns: "Data Server Mediasi", field: "total_data_mediasi" },
+  { columns: "Data Server Source", field: "total_data_source" },
+  { columns: "Selisih", field: "selisih" },
 ];
 
-function TransaksiDetail() {
+function DataCompare() {
   // State initialization
   const today = new Date().toISOString().split("T")[0];
 
@@ -80,7 +78,7 @@ function TransaksiDetail() {
       setLoading(true);
 
       const response = await axios.post(
-        `${env.API_URL}/transaksi_detail/getData${currentPage !== 1 ? "?page=" + currentPage : ""}`,
+        `${env.API_URL}/data_compare/getData${currentPage !== 1 ? "?page=" + currentPage : ""}`,
         { ruas_id, gerbang_id, start_date, end_date, limit },
       );
 
@@ -106,14 +104,12 @@ function TransaksiDetail() {
       setLoading(false);
     } catch (error) {
       const errorMessage =
-        error.response?.data?.errors?.ruas_id ||
-        error.response?.data?.errors?.gerbang_id ||
+        error.response?.data?.message ||
         error.message ||
         "Something went wrong!";
-
       setLoading(false);
       toast.error(errorMessage, {
-        stacked: true,
+        stack: true,
         position: "bottom-right",
         autoClose: 3000,
         hideProgressBar: true,
@@ -124,7 +120,7 @@ function TransaksiDetail() {
 
   return (
     <div className="h-screen max-w-[100vw] px-6 pb-16">
-      <Title name="Transaksi Detail" />
+      <Title name="Data Compare" />
       <Filter
         filter={filter}
         setFilter={setFilter}
@@ -134,16 +130,21 @@ function TransaksiDetail() {
       <Table meta={meta} handleLimit={setLimit}>
         <Table.Header>
           <tr className="text-center">
-            {columnsTransaksiDetail.map((col, index) => (
-              <th key={col.field || index}>{col.header}</th>
-            ))}
+            <th>No</th>
+            <th>Tanggal</th>
+            <th>GerbangID</th>
+            <th>No.Gardu</th>
+            <th>Shift</th>
+            <th>Data Server Mediasi</th>
+            <th>Data Server Source</th>
+            <th>Selisih</th>
           </tr>
         </Table.Header>
         <Table.Body
           itemsPerPage={limit}
           currentPage={currentPage}
           loading={loading}
-          columns={columnsTransaksiDetail}
+          columns={fieldDataCompare}
           listData={data}
         />
       </Table>
@@ -151,4 +152,4 @@ function TransaksiDetail() {
   );
 }
 
-export default TransaksiDetail;
+export default DataCompare;

@@ -18,6 +18,11 @@ function ListMenu({ name, Icon, color, isActive = false, link }) {
         active: "bg-green-200 text-green-500",
         bg: "bg-green-400",
       },
+      orange: {
+        icon: "group-hover:bg-orange-200 group-hover:text-orange-500 bg-base-100",
+        active: "bg-orange-200 text-orange-500",
+        bg: "bg-orange-400",
+      },
     };
 
     return colorVariants[color] || colorVariants.blue; // Default to blue if color is invalid

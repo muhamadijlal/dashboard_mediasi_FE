@@ -1,4 +1,4 @@
-import { FaPowerOff } from "react-icons/fa";
+// import { FaPowerOff } from "react-icons/fa";
 import NavbarTitle from "@organisms/navigation/navbar/NavbarTitle";
 import ToggleMenu from "@molecules/toggle/ToggleMenu";
 // import ToggleDarkMode from "@molecules/toggle/ToggleDarkMode";
@@ -7,9 +7,8 @@ import Dropdown from "@molecules/dropdown/Dropdown";
 function StickyNavbar() {
   return (
     <div
-      className={`sticky -top-1 flex h-16 justify-center bg-base-100 bg-opacity-50 text-base-content backdrop-blur transition-shadow duration-100 [transform:translate3d(0,0,0)] lg:z-30`}
+      className={`sticky top-0 z-10 flex h-16 justify-center bg-base-100 bg-opacity-50 text-base-content backdrop-blur transition-shadow duration-100 [transform:translate3d(0,0,0)]`}
     >
-      {" "}
       {/* add shadow-sm utility class when scroll */}
       <nav className="navbar w-full">
         <div className="flex-1 items-center">

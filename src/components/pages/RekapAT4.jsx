@@ -52,15 +52,21 @@ function RekapAT4() {
     handlePage: setCurrentPage,
   });
 
+  const isFilterValid = ({ ruas, gerbang, start_date, end_date }) => {
+    return ruas && gerbang && start_date && end_date;
+  };
+
   // Fetch data when currentPage or limit changes
   useEffect(() => {
-    fetchData(
-      filter.ruas,
-      filter.gerbang,
-      filter.start_date,
-      filter.end_date,
-      limit,
-    );
+    if (isFilterValid(filter) && limit) {
+      fetchData(
+        filter.ruas,
+        filter.gerbang,
+        filter.start_date,
+        filter.end_date,
+        limit,
+      );
+    }
   }, [currentPage, limit]);
 
   // Handle filter submit
