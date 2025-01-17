@@ -11,8 +11,8 @@ const fieldDataCompare = [
   { columns: "GerbangID", field: "gerbang_id" },
   { columns: "No.Gardu", field: "gardu_id" },
   { columns: "Shift", field: "shift" },
-  { columns: "Data Server Mediasi", field: "total_data_mediasi" },
-  { columns: "Data Server Source", field: "total_data_source" },
+  { columns: "Data Server Mediasi", field: "jumlah_data_mediasi" },
+  { columns: "Data Server Source", field: "jumlah_data_source" },
   { columns: "Selisih", field: "selisih" },
 ];
 

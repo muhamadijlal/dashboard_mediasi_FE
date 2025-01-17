@@ -1,19 +1,23 @@
 import Sidebar from "@organisms/navigation/Sidebar";
 import StickyNavbar from "@organisms/navigation/navbar/StickyNavbar";
-import { Outlet } from "react-router-dom";
+import { Outlet, Navigate } from "react-router-dom";
 
 function Layouts() {
+  // const user = true;
+
+  // if (!user) {
+  //   return <Navigate to="/login" />;
+  // }
+
   return (
-    <>
-      <div className="drawer lg:drawer-open">
-        <input id="my-drawer" type="checkbox" className="drawer-toggle" />
-        <Layouts.Content>
-          <StickyNavbar />
-          <Outlet />
-        </Layouts.Content>
-        <Sidebar />
-      </div>
-    </>
+    <div className="drawer lg:drawer-open">
+      <input id="my-drawer" type="checkbox" className="drawer-toggle" />
+      <Layouts.Content>
+        <StickyNavbar />
+        <Outlet />
+      </Layouts.Content>
+      <Sidebar />
+    </div>
   );
 }
 

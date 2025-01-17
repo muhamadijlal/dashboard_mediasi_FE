@@ -11,15 +11,16 @@ function App() {
   return (
     <>
       <Routes>
-        <Route element={<div>Login page</div>} />
         <Route element={<Layouts />}>
-          <Route index element={<TransaksiDetail />} />
+          <Route path="/" element={<TransaksiDetail />} />
+          {/* Redirect from / to /transaksi_detail */}
           <Route path="/transaksi_detail" element={<TransaksiDetail />} />
           <Route path="/rekap_at4" element={<RekapAT4 />} />
           {/* <Route path="/rekap_pendapatan" element={<RekapPendapatan />} /> */}
           <Route path="/data_compare" element={<DataCompare />} />
         </Route>
-        <Route path="/*" element={<PageNotFound />} />
+        <Route path="/*" element={<PageNotFound />} />{" "}
+        {/* Catch-all for unknown routes */}
       </Routes>
 
       <ToastContainer

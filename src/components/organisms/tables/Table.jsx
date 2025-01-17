@@ -4,20 +4,21 @@ import Card from "@components/molecules/Card";
 function Table({ meta, handleLimit, children }) {
   return (
     <Card>
+      <div className="mx-2 mb-5">
+        <select
+          className="select select-bordered select-xs mt-5 w-full max-w-[70px]"
+          defaultValue={10}
+          onChange={(e) => handleLimit(e.target.value)}
+        >
+          <option value={10}>10</option>
+          <option value={25}>25</option>
+          <option value={50}>50</option>
+          <option value={100}>100</option>
+          <option value={500}>500</option>
+        </select>
+      </div>
+
       <div className="overflow-x-auto">
-        <div className="mx-2 mb-10">
-          <select
-            className="select select-bordered select-xs mt-5 w-full max-w-[70px]"
-            defaultValue={10}
-            onChange={(e) => handleLimit(e.target.value)}
-          >
-            <option value={10}>10</option>
-            <option value={25}>25</option>
-            <option value={50}>50</option>
-            <option value={100}>100</option>
-            <option value={500}>500</option>
-          </select>
-        </div>
         <table className="table table-zebra table-xs">{children}</table>
       </div>
 

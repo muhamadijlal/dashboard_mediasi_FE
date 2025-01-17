@@ -11,22 +11,21 @@ const fieldRekapAt4 = [
   { field: "Tunai" },
   { field: "DinasOpr" },
   { field: "DinasKary" },
+  { field: "DinasMitra" },
   { field: "eMandiri" },
   { field: "eBri" },
-  { field: "eBni" },
-  { field: "eBca" },
   { field: "eBni" },
   { field: "eBca" },
   { field: "eFlo" },
   { field: "RpTunai" },
   { field: "RpDinasOpr" },
-  { field: "RpDinasMitra" },
   { field: "RpDinasKary" },
-  { field: "RpMandiri" },
-  { field: "RpBri" },
-  { field: "RpBni" },
-  { field: "RpBca" },
-  { field: "RpFlo" },
+  { field: "RpDinasMitra" },
+  { field: "RpeMandiri" },
+  { field: "RpeBri" },
+  { field: "RpeBni" },
+  { field: "RpeBca" },
+  { field: "RpeFlo" },
 ];
 
 function RekapAT4() {
@@ -151,8 +150,8 @@ function RekapAT4() {
             <th>Shift</th>
             <th>Tunai</th>
             <th>Dinas Opr</th>
+            <th>Dinas Kary</th>
             <th>Dinas Mitra</th>
-            <th>Dinas Kar</th>
             <th>Mandiri</th>
             <th>Bri</th>
             <th>Bni</th>
@@ -160,8 +159,8 @@ function RekapAT4() {
             <th>Flo</th>
             <th>Tunai</th>
             <th>Dinas Opr</th>
-            <th>Dinas Mitra</th>
             <th>Dinas Kary</th>
+            <th>Dinas Mitra</th>
             <th>Mandiri</th>
             <th>Bri</th>
             <th>Bni</th>
