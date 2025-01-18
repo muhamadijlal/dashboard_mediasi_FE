@@ -1,7 +1,7 @@
 import Paginator from "@molecules/pagination/Paginator";
 import Card from "@components/molecules/Card";
 
-function Table({ meta, handleLimit, children }) {
+function Table({ handleLimit, children, meta }) {
   return (
     <Card>
       <div className="mx-2 mb-5">

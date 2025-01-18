@@ -44,16 +44,19 @@ function Paginator({ meta }) {
         </button>
 
         {/* Pagination Buttons */}
-        {total ? (
-          currentPage <= 3 ? (
+        {total && lastPage > 1 ? (
+          lastPage < 5 ? (
+            // If less than 5 pages, show all pages
+            generatePaginationButtons(1, lastPage)
+          ) : currentPage <= 3 ? (
             // Display first 5 pages if currentPage is 3 or less
             generatePaginationButtons(1, 5)
-          ) : currentPage <= lastPage - 5 ? (
-            // Display pages centered around currentPage when it's far from lastPage
-            generatePaginationButtons(currentPage - 2, currentPage + 2)
-          ) : (
-            // Display last 5 pages when close to the end
+          ) : currentPage >= lastPage - 2 ? (
+            // Display last 5 pages if currentPage is near the last page
             generatePaginationButtons(lastPage - 4, lastPage)
+          ) : (
+            // Display 5 pages centered around currentPage when it's far from the ends
+            generatePaginationButtons(currentPage - 2, currentPage + 2)
           )
         ) : (
           <button className="btn btn-disabled join-item btn-sm hidden md:block">

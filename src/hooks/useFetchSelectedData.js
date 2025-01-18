@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const useFetchSelectData = () => {
   const [loading, setLoading] = useState(false);
@@ -16,7 +17,18 @@ const useFetchSelectData = () => {
         const response = await axios.post(`${env.API_URL}/select/getRuas`);
         setDataRuas(response.data.data); // Menyimpan data yang diterima
       } catch (error) {
-        console.error("Error fetching data Ruas:", error);
+        const errorMessage =
+          error.response?.data?.errors?.ruas_id ||
+          error.response?.data?.errors?.gerbang_id ||
+          error.message ||
+          "Something went wrong!";
+        toast.error(errorMessage, {
+          stacked: true,
+          position: "bottom-right",
+          autoClose: 3000,
+          hideProgressBar: true,
+          theme: "light",
+        });
       } finally {
         setLoading(false);
       }
@@ -38,7 +50,18 @@ const useFetchSelectData = () => {
         });
         setDataGerbang(response.data.data); // Menyimpan data yang diterima
       } catch (error) {
-        console.error("Error fetching data Gerbang:", error);
+        const errorMessage =
+          error.response?.data?.errors?.ruas_id ||
+          error.response?.data?.errors?.gerbang_id ||
+          error.message ||
+          "Something went wrong!";
+        toast.error(errorMessage, {
+          stacked: true,
+          position: "bottom-right",
+          autoClose: 3000,
+          hideProgressBar: true,
+          theme: "light",
+        });
       } finally {
         setLoading(false);
       }
