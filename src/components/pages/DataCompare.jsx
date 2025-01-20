@@ -11,8 +11,8 @@ const fieldDataCompare = [
   { columns: "GerbangID", field: "gerbang_id" },
   { columns: "No.Gardu", field: "gardu_id" },
   { columns: "Shift", field: "shift" },
+  { columns: "Data Server Integrator", field: "jumlah_data_integrator" },
   { columns: "Data Server Mediasi", field: "jumlah_data_mediasi" },
-  { columns: "Data Server Source", field: "jumlah_data_source" },
   { columns: "Selisih", field: "selisih" },
 ];
 
@@ -136,7 +136,7 @@ function DataCompare() {
             <th>No.Gardu</th>
             <th>Shift</th>
             <th>Data Server Mediasi</th>
-            <th>Data Server Source</th>
+            <th>Data Server Integrator</th>
             <th>Selisih</th>
           </tr>
         </Table.Header>

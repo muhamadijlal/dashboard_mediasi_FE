@@ -1,7 +1,7 @@
-function ListOptions({ value }) {
+function ListOptions({ value, label }) {
   return (
     <option value={value} className="capitalize" key={value}>
-      {value}
+      {label}
     </option>
   );
 }

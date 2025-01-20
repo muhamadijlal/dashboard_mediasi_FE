@@ -6,7 +6,7 @@ const useFetchSelectData = () => {
   const [loading, setLoading] = useState(false);
   const [dataRuas, setDataRuas] = useState([]);
   const [dataGerbang, setDataGerbang] = useState([]);
-  const [selectedRuas, setSelectedRuas] = useState("");
+  const [selectedRuas, setSelectedRuas] = useState([]);
   const [selectedGerbang, setSelectedGerbang] = useState("");
   // Fetch data untuk select pertama (ruas) dengan Axios
   useEffect(() => {

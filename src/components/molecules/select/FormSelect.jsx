@@ -23,7 +23,7 @@ function FormSelect(props) {
         handleChange={handleChange}
       >
         {options?.map((item) => (
-          <ListOptions value={item.value} key={item.value} />
+          <ListOptions value={item.value} label={item.label} key={item.value} />
         ))}
       </Select>
     </label>
