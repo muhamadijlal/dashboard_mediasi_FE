@@ -12,8 +12,8 @@ const columnsTransaksiDetail = [
   { header: "Perioda", field: "perioda" },
   { header: "No Resi", field: "no_resi" },
   { header: "Golongan", field: "gol" },
-  { header: "Metode Bayar", field: "metoda_bayar_id" },
-  { header: "Jenis Notran", field: "notran_id_sah" },
+  { header: "Metode Bayar", field: "metoda_bayar" },
+  { header: "Jenis Notran", field: "notran" },
   { header: "Etoll", field: "etoll_hash" },
   { header: "Tarif", field: "tarif" },
 ];

@@ -17,9 +17,7 @@ function Select(props) {
       defaultValue={defaultValue}
       onChange={(e) => handleChange(e.target.value)}
     >
-      <option value="" disabled>
-        {placeholder}
-      </option>
+      <option value="">{placeholder}</option>
       {children}
     </select>
   );

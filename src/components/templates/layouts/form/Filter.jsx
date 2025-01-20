@@ -3,7 +3,7 @@ import Card from "@molecules/Card";
 import useFetchSelectData from "@hooks/useFetchSelectedData";
 import FormInput from "@components/molecules/input/FormInput";
 import FormSelect from "@components/molecules/select/FormSelect";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { toast } from "react-toastify";
 
 function Filter({ onSubmit, isDisabled, filter, setFilter }) {
